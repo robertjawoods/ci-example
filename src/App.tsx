@@ -19,17 +19,19 @@ function App() {
         setCount,
       }}
     >
-      <h1>Count: {count}</h1>
-
       <ComponentA />
     </appContext.Provider>
   );
 }
 
 const ComponentA = () => {
+  const [isMan, setIsMan] = useState(true);
+
   return (
     <div>
-      <ComponentB />
+      <input type="button" value="Man" onClick={() => setIsMan(true)} />
+      <input type="button" value="Woman" onClick={() => setIsMan(false)} />
+      {isMan ? <h1>Man</h1> : <h1>Woman</h1>}
     </div>
   );
 };

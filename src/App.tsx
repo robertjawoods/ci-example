@@ -25,19 +25,38 @@ function App() {
 }
 
 const ComponentA = () => {
-  const [isMan, setIsMan] = useState(true);
+  const [isMan, setIsMan] = useState(0);
 
   return (
     <div>
       <input type="button" value="Man" onClick={() => setIsMan(true)} />
       <input type="button" value="Woman" onClick={() => setIsMan(false)} />
-      {isMan ? <h1>Man</h1> : <h1>Woman</h1>}
+      {isMan ? <ComponentA /> : <ComponentB />}
     </div>
   );
 };
 
+interface Person { 
+  id: number, 
+  name: string,
+  surname?: string
+}
+
+function printSurname(surname?: string) {
+  console.log(surname);
+}
+
 const ComponentB = () => {
   const { setCount } = React.useContext(appContext);
+
+  const t: Person = { 
+    id: 1,
+    name: 'test',
+    surname: "surname"
+  };
+
+  
+  printSurname(t.surname);
 
   return (
     <div>
